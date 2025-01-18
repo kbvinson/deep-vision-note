@@ -1,0 +1,15 @@
+/* 添加全局模态框样式 */
+.ant-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.ant-modal-footer .ant-space {
+  gap: 8px !important;
+}
+
+.ant-modal-footer .ant-btn {
+  min-width: 80px;
+}

@@ -1,0 +1,42 @@
+{
+  "name": "deep-vision-note",
+  "version": "1.0.0",
+  "description": "Deep Vision Note - PDF Management Tool",
+  "author": "Your Name",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "electron-dev": "cross-env NODE_ENV=development electron .",
+    "build:exe": "electron-builder --win --x64",
+    "dist": "npm run build && npm run build:exe"
+  },
+  "build": {
+    "appId": "com.deepvisionnote.app",
+    "productName": "Deep Vision Note",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Deep Vision Note"
+    },
+    "asar": true
+  }
+}

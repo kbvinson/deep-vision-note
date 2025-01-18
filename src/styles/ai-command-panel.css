@@ -1,0 +1,602 @@
+.ai-command-panel {
+  border-left: 1px solid #f0f0f0;
+  background: #fff;
+  height: 100%;
+  overflow: hidden;
+}
+
+.panel-container {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+}
+
+/* 输入区域样式 */
+.input-section {
+  flex: 0 0 40%;
+  min-height: 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+  flex: 0 0 auto;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: #1890ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-content {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.section-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.section-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.section-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.preset-commands {
+  margin-bottom: 16px;
+}
+
+.preset-command-item {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.preset-command-item:hover {
+  background: #e6f7ff;
+}
+
+.command-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 输出区域样式 */
+.output-section {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-section .section-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.current-response {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.response-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #e8e8e8;
+}
+
+.response-time {
+  color: #888;
+  font-size: 12px;
+}
+
+.response-content {
+  padding: 12px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.empty-response {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 14px;
+}
+
+.history-divider {
+  margin: 24px 0;
+}
+
+.response-history {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.history-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.history-time {
+  color: #888;
+  font-size: 12px;
+}
+
+.history-content {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.history-command {
+  padding: 12px;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  color: #666;
+}
+
+.history-response {
+  padding: 12px;
+}
+
+.selected-files {
+  margin-bottom: 16px;
+}
+
+.empty-files {
+  text-align: center;
+  color: #999;
+  padding: 16px;
+}
+
+.selected-files .ant-list-item {
+  padding: 8px;
+}
+
+.selected-files .ant-list-item:hover {
+  background: #f5f5f5;
+}
+
+.selected-files .anticon {
+  margin-right: 8px;
+  color: #1890ff;
+}
+
+/* Markdown 样式保持不变 */
+
+/* 在现有样式基础上添加 */
+.response-editor {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.editor-toolbar {
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.response-textarea {
+  border: none;
+  resize: none;
+  padding: 16px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+.response-textarea:focus {
+  box-shadow: none;
+}
+
+.markdown-preview {
+  padding: 16px;
+  min-height: 200px;
+  background: #fff;
+}
+
+.response-content {
+  padding: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.response-content:hover {
+  background-color: #fafafa;
+}
+
+/* 优化代码块样式 */
+.markdown-preview pre,
+.response-content pre {
+  margin: 16px 0;
+  padding: 16px;
+  background: #f6f8fa;
+  border-radius: 6px;
+  overflow: auto;
+}
+
+.markdown-preview code,
+.response-content code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+/* 优化表格样式 */
+.markdown-preview table,
+.response-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.markdown-preview th,
+.markdown-preview td,
+.response-content th,
+.response-content td {
+  border: 1px solid #e8e8e8;
+  padding: 8px 16px;
+}
+
+.markdown-preview th,
+.response-content th {
+  background: #fafafa;
+}
+
+/* 修改确认对话框样式 */
+.custom-modal .ant-modal-confirm-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.custom-modal .ant-modal-confirm-btns button {
+  min-width: 80px;
+}
+
+/* 优化响应编辑区域样式 */
+.response-textarea {
+  border: none !important;
+  resize: none;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  background: #fafafa;
+  padding: 16px !important;
+}
+
+.response-textarea:focus {
+  box-shadow: none !important;
+  background: #fff;
+}
+
+.response-content {
+  transition: all 0.3s;
+}
+
+.response-content:hover {
+  background: #fafafa;
+}
+
+/* 优化按钮样式 */
+.response-header .ant-btn-text {
+  padding: 4px 8px;
+}
+
+.response-header .ant-btn-text:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* 添加响应列表容器样式 */
+.responses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.response-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s;
+}
+
+.response-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 最新的响应突出显示 */
+.response-item:first-child {
+  border-left: 3px solid #1890ff;
+}
+
+/* 新增对话管理相关样式 */
+.section-header .header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-chat-btn {
+  padding: 2px 8px;
+  height: 24px;
+  margin-left: 8px;
+}
+
+.new-chat-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.conversation-tabs {
+  display: none;
+}
+
+.conversation-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.conversation-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: #f5f5f5;
+  border: none;
+  height: 24px;
+}
+
+.conversation-btn.active {
+  background: #e6f7ff;
+  border: 1px solid #91d5ff;
+}
+
+.conversation-btn:hover {
+  background: #e6f7ff;
+}
+
+.conversation-btn .delete-icon {
+  font-size: 12px;
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.conversation-btn:hover .delete-icon {
+  opacity: 1;
+}
+
+.conversation-btn .delete-icon:hover {
+  color: #ff4d4f;
+}
+
+/* 优化section-header的整体布局 */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+}
+
+/* 快捷操作区域样式 */
+.quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.files-section,
+.commands-section {
+  flex: 1;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+  min-width: 0;
+  max-height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+  font-size: 13px;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.selected-files-list,
+.commands-list {
+  padding: 4px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.file-item,
+.command-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.file-name,
+.command-content {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.empty-hint {
+  text-align: center;
+  color: #999;
+  padding: 8px;
+  font-size: 12px;
+}
+
+/* 优化按钮样式 */
+.section-title .ant-btn-link {
+  padding: 2px 4px;
+  height: 24px;
+  font-size: 12px;
+}
+
+/* 优化滚动条样式 */
+.selected-files-list::-webkit-scrollbar,
+.commands-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.selected-files-list::-webkit-scrollbar-thumb,
+.commands-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.selected-files-list::-webkit-scrollbar-track,
+.commands-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 修改对话样式 */
+.conversation-item {
+  margin-bottom: 24px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.message {
+  padding: 16px;
+}
+
+.user-message {
+  background: #f0f7ff;
+  border-bottom: 1px solid #e6f0ff;
+  position: relative;
+}
+
+.user-message::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #1890ff;
+}
+
+.ai-message {
+  background: #f9f9f9;
+  position: relative;
+  border-top: 1px solid #f0f0f0;
+}
+
+.message-header {
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-role {
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.user-message .message-role {
+  color: #1890ff;
+  background: rgba(24, 144, 255, 0.1);
+}
+
+.ai-message .message-role {
+  color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.message-content {
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.user-message .message-content {
+  color: #1f1f1f;
+}
+
+.ai-message .message-content {
+  color: #262626;
+}
+
+/* 编辑状态样式 */
+.response-textarea {
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 4px;
+  padding: 12px !important;
+  font-family: inherit;
+  background: #fff !important;
+  margin-top: 8px;
+  color: #262626;
+}
+
+.response-textarea:focus {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1) !important;
+}

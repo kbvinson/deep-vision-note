@@ -1,0 +1,65 @@
+.log-container {
+  height: 400px;
+  overflow-y: auto;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: "Courier New", Consolas, monospace;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.log-entry {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  padding: 8px;
+  border-radius: 4px;
+  background: #fafafa;
+  transition: background-color 0.3s;
+}
+
+.log-entry:hover {
+  background: #f0f0f0;
+}
+
+.log-time {
+  color: #8c8c8c;
+  margin-right: 12px;
+  font-weight: 500;
+}
+
+.log-message {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.log-viewer-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.log-progress {
+  margin-top: 8px;
+  background: #f5f5f5;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.ant-modal-content {
+  background: #fafafa !important;
+}
+
+.ant-modal-header {
+  background: #fafafa !important;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 16px 24px;
+}
+
+.ant-modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 16px 24px;
+  background: #fafafa;
+} 
